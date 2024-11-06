@@ -1,4 +1,5 @@
 # **Savoiria Search Engine**
+**Savoiria** is derived from the French word "Savoir," which means "knowledge" or "to know." This search engine aims to bring knowledge to users by providing relevant Wikipedia summaries, images, and ranking them based on cosine similarity to the search query.
 
 A custom search engine that fetches relevant Wikipedia summaries, images, and ranks them based on cosine similarity to your search query.
 
