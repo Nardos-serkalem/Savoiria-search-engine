@@ -1,4 +1,4 @@
-# This workflow installs Python dependencies and lints for major Python syntax errors and undefined names
+# This workflow installs Python dependencies and lints for major Python syntax errors, undefined names, and missing imports.
 
 name: Python package
 
@@ -36,10 +36,17 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install flake8
+          python -m pip install flake8 pylint
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Lint for major errors with flake8
+      - name: Check for missing imports
+        # Manually check for critical imports, like `requests`, to catch ImportErrors early
         run: |
-          # Only check for syntax errors and undefined names with critical flags
+          python -c "import requests" || exit 1
+
+      - name: Lint for major errors with flake8 and pylint
+        run: |
+          # Only check for syntax errors and undefined names with critical flags using flake8
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Use pylint to check for missing imports and other critical issues
+          pylint **/*.py --disable=all --enable=E0401
