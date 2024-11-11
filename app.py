@@ -3,7 +3,7 @@ import requests
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import nltk
-from nltk.stem import WordNetLemmatizer
+from nltk.stem import WordNetLemmatizer ###
 
 app = Flask(__name__)
 
