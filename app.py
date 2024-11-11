@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import requests
+import requests ///
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import nltk
