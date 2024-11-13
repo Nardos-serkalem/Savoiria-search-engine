@@ -36,7 +36,7 @@ def get_wikipedia_summary(query):
         }
         summary_response = requests.get(WIKIPEDIA_API_URL, params=summary_params)
         page = summary_response.json().get("query", {}).get("pages", {}).get(str(page_id), {})
-         #this is image urls 
+         
         image_url = page.get("thumbnail", {}).get("source")
         
         summaries.append({
